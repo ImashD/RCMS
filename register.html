@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for IRC 2025</title>
+    <link rel="stylesheet" href="static\css\styles2.css">
+    <script src="qrcode.min.js"></script>
+    <script>
+        // Function to show the confirmation message after form submission
+        function showConfirmation(event) {
+            event.preventDefault();  // Prevent form from submitting normally
+
+            // Hide the form
+            document.querySelector('.registration-form').style.display = 'none';
+            document.querySelector('p').style.display = 'none';
+            document.querySelector('h1').style.display = 'none';
+          
+            // Show the confirmation message
+            document.querySelector('.confirmation-message').style.display = 'block';
+            document.querySelector('.qr-section').style.display = 'block';
+                    
+            // Generate the QR code
+            const qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: `Registration details:\nEmail: ${email}`, 
+                width: 128,
+                height: 128,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // Show the Download button after QR code is generated
+            document.getElementById('download-btn').style.display = 'block';
+        }
+            function downloadQRCode() {
+                const canvas = document.querySelector("#qrcode canvas"); // Get the canvas element where QR code is drawn
+                const dataUrl = canvas.toDataURL("image/png"); // Convert canvas to data URL (image format)
+
+                // Create a temporary link to trigger download
+                const link = document.createElement("a");
+                link.href = dataUrl;
+                link.download = "qrcode.png"; // Specify the file name
+                link.click(); // Trigger the download
+            }
+            
+    </script>
+</head>
+<body>
+    
+    <main>
+        <h1>Register for IRC 2025</h1><br>
+        <p>Please fill out the form below to register for the conference.</p>
+
+        <form onsubmit="showConfirmation(event)" class="registration-form" action="#" method="post">
+            <div class="form-group">
+                <label for="name">Name with initials:<span class="required">*</span></label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:<span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nic">NIC No:<span class="required">*</span></label>
+                <input type="nic" id="nic" name="nic" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" name="contact" required pattern="[0-9]{10}" placeholder="Enter 10-digit number">
+            </div>
+
+            <div class="form-group">
+                <label for="organization">Organization / Institution:<span class="required">*</span></label>
+                <input type="text" id="organization" name="organization" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sessions">Select Sessions to Attend: (view "About" for more details)</label>
+                               <div class="checkbox-container">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="session1" name="session1" value="session1"/>
+                            <label for= "session1">AI in Healthcare</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="session2" name="session2" value="session2"/>
+                            <label for= "session2">Ethics in AI</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="session3" name="session3" value="session3"/>
+                            <label for= "session3">IoT Cyber Threats</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="session4" name="session4" value="session4"/>
+                            <label for= "session4">Zero Trust Models</label>
+                        </div>                    
+                    </div>
+                    <div class="checkbox-container2">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="session5" name="session5" value="session5"/>
+                            <label for= "session5">Agile Teams</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="session6" name="session6" value="session6"/>
+                            <label for= "session6">DevOps Practices</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="session7" name="session7" value="session7"/>
+                            <label for= "session7">Big Data Insights</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="session6" name="session8" value="session8"/>
+                            <label for= "session8">Deep Learning NLP</label>
+                        </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="comments">Additional Comments:</label>
+                <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
+            </div>       
+
+            <p class="notice"><span class="required">*</span> Indicates a required field</p><br>
+
+            <button type="submit" class="submit-btn">Register</button> <br>
+
+        </form>
+    
+        <!-- Confirmation message that appears after form submission -->
+        <div class = "qr-section">
+            <div id="qrcode"></div><br>
+            <button id="download-btn" style="display: none;" onclick="downloadQRCode()">Download QR Code</button>
+        </div>
+        <div class="confirmation-message" style="display: none;">  
+            <h1>Thank You for Registering!</h1><br>
+            <p>We’ve received your registration.</p><br>
+            <p>A QR code containing your registration details has been generated here. </p>
+            <p>Please download it for future reference.</p><br>
+            <p style="color: white;">&copy; IRC 2024 | All Rights Reserved</p>
+           
+        </div>
+    </main>
+
+    
+</body>
+</html>

@@ -1,0 +1,110 @@
+body {
+    background-image: url('img2.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    padding: 0;
+    background-color: #faf8f8;
+    color: #333;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f2c4ef;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    box-shadow: 2px 0 5px rgba(194, 121, 174, 0.2);
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #f5efef;
+    text-align: center;
+    background-color: #540445; /* Highlight background color */
+    padding: 10px; /* Space inside the box */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    border: 2px solid #ffc10700; /* Optional border */
+    width: calc(100% - 30px); /* Adjust width to fit neatly inside the sidebar */
+    display: inline-block; /* Shrink wrap around the content */
+}
+
+.sidebar a {
+    color: #010101;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    box-sizing: border-box;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+    color: #000000;
+}
+
+.sidebar ul {
+    list-style-type: square;
+}
+
+.sidebar li {
+    text-align: left;
+}
+
+li::marker {
+    color: #540445;
+}
+
+.sidebar a.contact-us {
+    position: absolute; /* Position it at the bottom of the sidebar */
+    bottom: 40px; /* Adjust the distance from the bottom */
+    left: 10px; /* Align it to the left side of the sidebar */
+    width: 230px; /* Make it take up the full width of the sidebar */
+    padding: 10px;
+    background-color: #4caf4f00; /* Green background */
+    color:#540445;  /* White text */
+    text-align: left; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.1em;
+}
+
+.sidebar a.contact-us:hover {
+    background-color: #575757; 
+    color: #faf8f8;
+}
+
+.sidebar a.contact-us .contact-icon {
+    margin-left: 80px; /* Space between the text and the image */
+    width: 20px; /* Adjust the size of the image */
+    height: 20px; /* Adjust the size of the image */
+}
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    color: #f8f2f8;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Stretch footer across the entire width */
+    background-color: #0c0c0c;
+    color: white;
+    text-align: center;
+    padding: 0.0005em;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
